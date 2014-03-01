@@ -1,0 +1,21 @@
+﻿@model DemoBlog.Models.Entry
+
+@{
+    ViewBag.Title = "ViewEntry";
+}
+
+<div class="row">
+    <h2>@Model.Title</h2><a class="btn btn-danger" href="/Home/Edit/@Model.Slug">Edit</a>
+</div>
+<div class="row">
+    <section>@Html.Raw(Model.Content)</section>
+</div>
+<div class="row">
+    <h3>Comments</h3>
+    @foreach(var item in @Model.Comments){
+        <div>
+            @item.User<br/>
+            @item.Message
+        </div>
+    }
+</div>

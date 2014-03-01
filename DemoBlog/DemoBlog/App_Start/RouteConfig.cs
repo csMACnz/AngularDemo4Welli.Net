@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace DemoBlog
@@ -12,6 +8,25 @@ namespace DemoBlog
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+
+            routes.MapRoute(
+                name: "ViewEntry",
+                url: "Home/Entry/{slug}",
+                defaults: new { controller = "Home", action = "ViewEntry"}
+            );
+
+            routes.MapRoute(
+                name: "NewEntry",
+                url: "Home/New",
+                defaults: new { controller = "Home", action = "NewEntry" }
+            );
+
+            routes.MapRoute(
+                name: "EditEntry",
+                url: "Home/Edit/{slug}",
+                defaults: new { controller = "Home", action = "EditEntry" }
+            );
 
             routes.MapRoute(
                 name: "Default",

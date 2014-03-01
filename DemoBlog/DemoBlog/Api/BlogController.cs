@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using DemoBlog.Models;
 using Raven.Client;
+using Raven.Client.Linq;
 
 namespace DemoBlog.Api
 {
@@ -17,7 +18,7 @@ namespace DemoBlog.Api
         // GET api/blog/5
         public async Task<Entry> Get(string slug)
         {
-            return await Session.LoadAsync<Entry>(slug);
+            return await Session.Query<Entry>().Where(e=>e.Slug==slug).FirstOrDefaultAsync();
         }
 
         // POST api/blog
@@ -29,7 +30,7 @@ namespace DemoBlog.Api
         // PUT api/blog/5
         public async Task Put(string slug, [FromBody]Entry value)
         {
-            var entry = await Session.LoadAsync<Entry>(slug);
+            var entry = await Get(slug);
             entry.Title = value.Title;
             entry.Content = value.Content;
             entry.Tags = value.Tags;

@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using DemoBlog.Application;
 using Raven.Client;
 using Raven.Client.Embedded;
 
@@ -11,26 +12,13 @@ namespace DemoBlog.Api
 {
     public abstract class RavenApiController : ApiController
     {
-        public IDocumentStore Store
-        {
-            get { return LazyStore.Value; }
-        }
-
-        private static readonly Lazy<IDocumentStore> LazyStore = new Lazy<IDocumentStore>(() =>
-        {
-            var store = new EmbeddableDocumentStore();
-            
-            store.Initialize();
-
-            return store;
-        });
-   
+        
         public IAsyncDocumentSession Session { get; set; }
 
         public override async Task<HttpResponseMessage> ExecuteAsync(HttpControllerContext controllerContext,
             CancellationToken cancellationToken)
         {
-            using (Session = Store.OpenAsyncSession())
+            using (Session = Repository.OpenAsyncSession())
             {
                 var result = await base.ExecuteAsync(controllerContext, cancellationToken);
                 await Session.SaveChangesAsync();

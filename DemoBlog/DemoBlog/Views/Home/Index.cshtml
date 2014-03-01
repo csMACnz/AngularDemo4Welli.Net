@@ -1,0 +1,20 @@
+﻿@model List<DemoBlog.Models.Entry>
+
+@{
+    ViewBag.Title = "title";
+
+}
+
+<h2>My Demo Blog</h2>
+<p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+<div class="row">
+    
+    @foreach (var entry in Model)
+{
+    <div class="col-lg-4 col-md-6">
+        <h2>@entry.Title</h2>
+        <p>@Html.Raw(entry.Content)</p>
+        <p><a class="btn btn-default" href="/Home/Entry/@entry.Slug" title="View Entry">View details &raquo;</a></p>
+    </div><!--/span-->
+}
+</div>
