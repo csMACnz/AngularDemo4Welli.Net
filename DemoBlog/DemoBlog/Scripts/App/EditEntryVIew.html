@@ -1,0 +1,31 @@
+﻿<h2>Edit Entry</h2>
+<div class="col-md-6">
+    <form role="form" ng-submit="savePost()">
+
+        <fieldset>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input class="form-control" name="title" type="text" ng-model="post.title" />
+            </div>
+            <div class="form-group">
+                <label>Content</label>
+                <div ui-ace="{theme: 'twilight', mode:'markdown', useWrapMode: true}" ng-model="post.content"></div>
+            </div>
+        </fieldset>
+
+        <a class="btn btn-default" href="{{post.slug}}">Cancel</a>
+        <input class="btn btn-primary" type="submit" value="Save" />
+    </form>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label>Help</label><br />
+        <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Cheat Sheet</a>
+    </div>
+    <div class="form-group">
+        <label for="content">Preview</label>
+        <div class="well">
+            <div ng-bind-html="post.content|markdownToHtml"></div>
+        </div>
+    </div>
+</div>

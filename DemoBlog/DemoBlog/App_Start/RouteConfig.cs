@@ -11,6 +11,12 @@ namespace DemoBlog
 
 
             routes.MapRoute(
+                name: "Angular",
+                url: "Angular/{*anything}",
+                defaults: new { controller = "Angular", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "ViewEntry",
                 url: "Home/Entry/{slug}",
                 defaults: new { controller = "Home", action = "ViewEntry"}

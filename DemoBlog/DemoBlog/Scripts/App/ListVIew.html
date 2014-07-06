@@ -1,0 +1,17 @@
+﻿
+<h3>My Demo Blog</h3>
+<p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+<a class="btn btn-default" href="newpost" >New Post</a>
+<div class="row">
+
+    <div ng-repeat-start="p in posts" ng-if="p.modThreeFill" class="clearfix visible-md visible-lg"></div>
+
+    <div ng-if="p.modTwoFill" class="clearfix visible-sm"></div>
+
+    <div ng-repeat-end class="col-sm-6 col-md-4">
+        <h2>{{p.title}}</h2>
+        <div ng-bind-html="p.content|markdownToHtml"></div>
+        <p><a class="btn btn-default" href="{{p.slug}}" title="View Entry">View details &raquo;</a></p>
+    </div>
+
+</div>

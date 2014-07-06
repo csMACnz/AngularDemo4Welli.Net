@@ -24,6 +24,20 @@ namespace DemoBlog
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
+                      "~/Scripts/angular.js",
+                      "~/Scripts/angular-route.js",
+                      "~/Scripts/angular-resource.js",
+                      "~/Scripts/angular-sanitize.js",
+                      "~/Scripts/ui-ace.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                      "~/Scripts/App/app.js",
+                      "~/Scripts/App/ListCtrl.js",
+                      "~/Scripts/App/ViewEntryCtrl.js",
+                      "~/Scripts/App/EditEntryCtrl.js",
+                      "~/Scripts/App/NewEntryCtrl.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/bootstrap-theme.css",

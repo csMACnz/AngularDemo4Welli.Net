@@ -13,6 +13,7 @@ namespace DemoBlog
         {
             // Code that runs on application startup
             AreaRegistration.RegisterAllAreas();
+            GlobalConfiguration.Configuration.Formatters.XmlFormatter.UseXmlSerializer = true;
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
